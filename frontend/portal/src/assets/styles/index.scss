@@ -1,0 +1,86 @@
+@import './variables.scss';
+
+// =====================
+// Element Plus theme override
+// =====================
+:root {
+  --el-color-primary: #{$primary-color};
+  --el-color-primary-light-3: #{$primary-light};
+  --el-color-primary-light-5: #{$primary-lighter};
+  --el-color-primary-dark-2: #{$primary-dark};
+}
+
+// =====================
+// Page transitions
+// =====================
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.page-leave-to {
+  opacity: 0;
+}
+
+// =====================
+// Common layout helpers
+// =====================
+.page-header-section {
+  background: $gradient-primary;
+  color: white;
+  padding: $spacing-16 0 $spacing-12;
+  text-align: center;
+
+  .page-title {
+    font-size: $font-size-4xl;
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-4;
+
+    @include respond-to(md) {
+      font-size: $font-size-3xl;
+    }
+  }
+
+  .page-subtitle {
+    font-size: $font-size-lg;
+    opacity: 0.9;
+  }
+}
+
+.section-title {
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-bold;
+  text-align: center;
+  margin-bottom: $spacing-12;
+  color: $text-primary;
+
+  @include respond-to(md) {
+    font-size: $font-size-2xl;
+  }
+}
+
+// =====================
+// Scrollbar
+// =====================
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: $bg-tertiary;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $primary-lighter;
+  border-radius: $radius-full;
+
+  &:hover {
+    background: $primary-light;
+  }
+}

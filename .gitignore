@@ -1,0 +1,143 @@
+# ─────────────────────────────────────────────────────────────────
+# huiwutong - 学术会议管理平台 .gitignore
+# ─────────────────────────────────────────────────────────────────
+
+# ── Java / Spring Boot ───────────────────────────────────────────
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+hs_err_pid*
+replay_pid*
+
+# Maven
+backend/target/
+backend/.mvn/
+backend/mvnw
+backend/mvnw.cmd
+**/target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# Spring Boot
+backend/logs/
+backend/*.log
+
+# ── Node.js / Vue / Vite ─────────────────────────────────────────
+node_modules/
+**/node_modules/
+.pnpm-debug.log*
+.pnpm-store/
+.yarn/
+.yarn-integrity
+
+# Build outputs
+frontend/**/dist/
+frontend/**/dist-ssr/
+frontend/**/*.local
+
+# Vite
+frontend/**/.vite/
+
+# ── IDE / Editor ─────────────────────────────────────────────────
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# VS Code
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# Eclipse
+.settings/
+.classpath
+.project
+.metadata/
+bin/
+tmp/
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# ── OS generated files ───────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ── Environment & Secrets ────────────────────────────────────────
+.env
+.env.*
+!.env.example
+!.env.template
+*.env.local
+*.env.*.local
+
+# Application config with secrets
+application-dev.yml
+application-prod.yml
+application-prod.properties
+**/application-local.yml
+**/application-prod.yml
+
+# ── Logs & Temp ──────────────────────────────────────────────────
+logs/
+*.log
+log/
+tmp/
+temp/
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# ── Database ─────────────────────────────────────────────────────
+*.sql.bak
+*.sql.backup
+*.db
+*.sqlite
+*.sqlite3
+
+# ── Test & Coverage ──────────────────────────────────────────────
+coverage/
+.nyc_output/
+*.lcov
+lib-cov/
+.grunt/
+.lock-wscript/
+
+# ── Docker ───────────────────────────────────────────────────────
+docker-compose.override.yml
+
+# ── Misc ─────────────────────────────────────────────────────────
+.cache/
+.parcel-cache/
+*.tsbuildinfo
+.npm
+.eslintcache
+.stylelintcache
+
+# Lock files (optional - uncomment if you want to ignore)
+# package-lock.json
+# pnpm-lock.yaml
+# yarn.lock

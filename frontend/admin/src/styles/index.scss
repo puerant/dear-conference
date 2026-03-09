@@ -1,0 +1,64 @@
+@use './variables' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', 'Segoe UI',
+    sans-serif;
+  font-size: 14px;
+  color: $text-primary;
+  background: $bg-base;
+  -webkit-font-smoothing: antialiased;
+}
+
+// Override Element Plus card style globally
+.el-card {
+  border-radius: $border-radius-lg !important;
+  box-shadow: $shadow-sm !important;
+  border: 1px solid #f0f0f0 !important;
+
+  .el-card__header {
+    font-weight: 600;
+    color: $text-primary;
+    padding: 14px 20px;
+    border-bottom-color: #f0f0f0;
+  }
+}
+
+// Pagination alignment
+.el-pagination {
+  display: flex;
+}
+
+// Scrollbar styling
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d9d9d9;
+  border-radius: 3px;
+
+  &:hover {
+    background: #bfbfbf;
+  }
+}
+
+// Page-level card spacing helper
+.page-card-gap {
+  margin-bottom: 16px;
+}

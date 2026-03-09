@@ -1,0 +1,23 @@
+// SCSS variables — imported globally via vite.config.ts additionalData
+
+$primary: #1677ff;
+$success: #52c41a;
+$warning: #fa8c16;
+$danger: #f5222d;
+$info: #8c8c8c;
+
+$text-primary: #262626;
+$text-secondary: #595959;
+$text-disabled: #bfbfbf;
+
+$border-color: #d9d9d9;
+$bg-base: #f0f2f5;
+$bg-white: #ffffff;
+
+$border-radius-sm: 4px;
+$border-radius-base: 6px;
+$border-radius-lg: 8px;
+
+$shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.06);
+$shadow-base: 0 2px 8px rgba(0, 0, 0, 0.08);
+$shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);

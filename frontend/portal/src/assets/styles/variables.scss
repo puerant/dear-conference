@@ -1,0 +1,120 @@
+// =====================
+// 主题色 - 浅紫色
+// =====================
+$primary-color: #9b59b6;
+$primary-light: #bb8fce;
+$primary-lighter: #d4b7db;
+$primary-dark: #7d3c98;
+
+// 辅助色
+$secondary-color: #8e44ad;
+$accent-color: #e74c3c;
+$success-color: #27ae60;
+$warning-color: #f39c12;
+$info-color: #3498db;
+
+// 中性色
+$text-primary: #2c3e50;
+$text-secondary: #7f8c8d;
+$text-disabled: #bdc3c7;
+$border-color: #e5e7eb;
+$divider-color: #f0f0f0;
+
+// 背景色
+$bg-primary: #ffffff;
+$bg-secondary: #f9f9fb;
+$bg-tertiary: #f3f4f6;
+
+// 渐变色
+$gradient-primary: linear-gradient(135deg, $primary-color, $secondary-color);
+$gradient-light: linear-gradient(135deg, $primary-lighter, $primary-light);
+
+// =====================
+// 字体系统
+// =====================
+$font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+$font-family-heading: 'Noto Serif SC', 'Source Serif Pro', Georgia, serif;
+$font-family-mono: 'Fira Code', 'Consolas', 'Monaco', monospace;
+
+$font-size-xs: 12px;
+$font-size-sm: 14px;
+$font-size-base: 16px;
+$font-size-lg: 18px;
+$font-size-xl: 20px;
+$font-size-2xl: 24px;
+$font-size-3xl: 32px;
+$font-size-4xl: 40px;
+$font-size-5xl: 48px;
+
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+$line-height-tight: 1.25;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.75;
+
+// =====================
+// 间距系统
+// =====================
+$spacing-0: 0;
+$spacing-1: 4px;
+$spacing-2: 8px;
+$spacing-3: 12px;
+$spacing-4: 16px;
+$spacing-5: 20px;
+$spacing-6: 24px;
+$spacing-8: 32px;
+$spacing-10: 40px;
+$spacing-12: 48px;
+$spacing-16: 64px;
+$spacing-20: 80px;
+$spacing-24: 96px;
+
+// =====================
+// 圆角
+// =====================
+$radius-none: 0;
+$radius-sm: 4px;
+$radius-base: 8px;
+$radius-lg: 12px;
+$radius-xl: 16px;
+$radius-2xl: 24px;
+$radius-full: 9999px;
+
+// =====================
+// 阴影
+// =====================
+$shadow-sm: 0 1px 2px 0 rgba(155, 89, 182, 0.05);
+$shadow-base: 0 1px 3px 0 rgba(155, 89, 182, 0.1);
+$shadow-md: 0 4px 6px -1px rgba(155, 89, 182, 0.1), 0 2px 4px -1px rgba(155, 89, 182, 0.06);
+$shadow-lg: 0 10px 15px -3px rgba(155, 89, 182, 0.1), 0 4px 6px -2px rgba(155, 89, 182, 0.05);
+$shadow-xl: 0 20px 25px -5px rgba(155, 89, 182, 0.1), 0 10px 10px -5px rgba(155, 89, 182, 0.04);
+
+// =====================
+// 响应式断点
+// =====================
+$breakpoint-xs: 480px;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-2xl: 1400px;
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == xs {
+    @media (max-width: $breakpoint-xs) { @content; }
+  } @else if $breakpoint == sm {
+    @media (max-width: $breakpoint-sm) { @content; }
+  } @else if $breakpoint == md {
+    @media (max-width: $breakpoint-md) { @content; }
+  } @else if $breakpoint == lg {
+    @media (max-width: $breakpoint-lg) { @content; }
+  } @else if $breakpoint == xl {
+    @media (max-width: $breakpoint-xl) { @content; }
+  } @else if $breakpoint == 2xl {
+    @media (max-width: $breakpoint-2xl) { @content; }
+  }
+}

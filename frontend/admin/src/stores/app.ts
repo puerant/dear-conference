@@ -1,0 +1,23 @@
+import { defineStore } from 'pinia'
+import { ref } from 'vue'
+
+export const useAppStore = defineStore('app', () => {
+  const sidebarCollapsed = ref(false)
+  const isDarkMode = ref(false)
+
+  function toggleSidebar() {
+    sidebarCollapsed.value = !sidebarCollapsed.value
+  }
+
+  function toggleDarkMode() {
+    isDarkMode.value = !isDarkMode.value
+    document.documentElement.className = isDarkMode.value ? 'dark' : ''
+  }
+
+  return {
+    sidebarCollapsed,
+    isDarkMode,
+    toggleSidebar,
+    toggleDarkMode
+  }
+})
