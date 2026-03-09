@@ -1,6 +1,10 @@
 package com.huiwutong.conference.service.dto.conference;
 
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -20,9 +24,8 @@ public class HotelRoomDto implements Serializable {
     private Long id;
 
     /**
-     * 酒店ID
+     * 酒店ID（由路径参数回填）
      */
-    @NotNull(message = "酒店ID不能为空")
     private Long hotelId;
 
     /**

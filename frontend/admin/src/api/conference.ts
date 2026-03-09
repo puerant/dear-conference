@@ -110,8 +110,8 @@ export interface ScheduleItemDto {
   scheduleId?: number
   time: string
   title: string
-  description?: string
-  speakerId?: number
+  description?: string | null
+  speakerId?: number | null
   sortOrder?: number
 }
 
@@ -167,7 +167,7 @@ export interface HotelRoomDto {
   roomType: string
   price: number
   stock?: number
-  description?: string
+  description?: string | null
   sortOrder?: number
 }
 
@@ -189,13 +189,13 @@ export interface ExpertListVo {
  * 获取会议信息
  */
 export function getConferenceInfo() {
-  return request.get<API.ConferenceInfo>('/admin/conference')
+  return request.get<ConferenceInfo, ConferenceInfo>('/admin/conference')
 }
 
 /**
  * 保存/更新会议信息
  */
-export function saveConferenceInfo(data: API.ConferenceInfoDto) {
+export function saveConferenceInfo(data: ConferenceInfoDto) {
   return request.post('/admin/conference', data)
 }
 
@@ -208,27 +208,27 @@ export function getScheduleList(params?: {
   startDate?: string
   endDate?: string
 }) {
-  return request.get<API.ScheduleVo[]>('/admin/schedule', { params })
+  return request.get<ScheduleVo[], ScheduleVo[]>('/admin/schedule', { params })
 }
 
 /**
  * 获取日程详情
  */
 export function getScheduleDetail(id: number) {
-  return request.get<API.ScheduleVo>(`/admin/schedule/${id}`)
+  return request.get<ScheduleVo, ScheduleVo>(`/admin/schedule/${id}`)
 }
 
 /**
  * 创建日程
  */
-export function createSchedule(data: API.ScheduleDto) {
+export function createSchedule(data: ScheduleDto) {
   return request.post('/admin/schedule', data)
 }
 
 /**
  * 更新日程
  */
-export function updateSchedule(id: number, data: API.ScheduleDto) {
+export function updateSchedule(id: number, data: ScheduleDto) {
   return request.put(`/admin/schedule/${id}`, data)
 }
 
@@ -242,14 +242,14 @@ export function deleteSchedule(id: number) {
 /**
  * 添加日程项
  */
-export function addScheduleItem(scheduleId: number, data: API.ScheduleItemDto) {
+export function addScheduleItem(scheduleId: number, data: ScheduleItemDto) {
   return request.post(`/admin/schedule/${scheduleId}/items`, data)
 }
 
 /**
  * 更新日程项
  */
-export function updateScheduleItem(id: number, data: API.ScheduleItemDto) {
+export function updateScheduleItem(id: number, data: ScheduleItemDto) {
   return request.put(`/admin/schedule-item/${id}`, data)
 }
 
@@ -269,27 +269,27 @@ export function getExpertList(params?: {
   keyword?: string
   isKeynote?: number
 }) {
-  return request.get<API.ExpertVo[]>('/admin/experts', { params })
+  return request.get<ExpertVo[], ExpertVo[]>('/admin/experts', { params })
 }
 
 /**
  * 获取专家详情
  */
 export function getExpertDetail(id: number) {
-  return request.get<API.ExpertVo>(`/admin/expert/${id}`)
+  return request.get<ExpertVo, ExpertVo>(`/admin/expert/${id}`)
 }
 
 /**
  * 创建专家
  */
-export function createExpert(data: API.ExpertDto) {
+export function createExpert(data: ExpertDto) {
   return request.post('/admin/expert', data)
 }
 
 /**
  * 更新专家
  */
-export function updateExpert(id: number, data: API.ExpertDto) {
+export function updateExpert(id: number, data: ExpertDto) {
   return request.put(`/admin/expert/${id}`, data)
 }
 
@@ -306,7 +306,7 @@ export function deleteExpert(id: number) {
 export function uploadExpertAvatar(id: number, file: File) {
   const formData = new FormData()
   formData.append('file', file)
-  return request.post(`/api/admin/expert/${id}/avatar`, formData, {
+  return request.post(`/admin/expert/${id}/avatar`, formData, {
     headers: { 'Content-Type': 'multipart/form-data' }
   })
 }
@@ -320,27 +320,27 @@ export function getHotelList(params?: {
   keyword?: string
   isRecommended?: number
 }) {
-  return request.get<API.HotelVo[]>('/admin/hotels', { params })
+  return request.get<HotelVo[], HotelVo[]>('/admin/hotels', { params })
 }
 
 /**
  * 获取酒店详情
  */
 export function getHotelDetail(id: number) {
-  return request.get<API.HotelVo>(`/admin/hotel/${id}`)
+  return request.get<HotelVo, HotelVo>(`/admin/hotel/${id}`)
 }
 
 /**
  * 创建酒店
  */
-export function createHotel(data: API.HotelDto) {
+export function createHotel(data: HotelDto) {
   return request.post('/admin/hotel', data)
 }
 
 /**
  * 更新酒店
  */
-export function updateHotel(id: number, data: API.HotelDto) {
+export function updateHotel(id: number, data: HotelDto) {
   return request.put(`/admin/hotel/${id}`, data)
 }
 
@@ -354,14 +354,14 @@ export function deleteHotel(id: number) {
 /**
  * 添加房型
  */
-export function addHotelRoom(hotelId: number, data: API.HotelRoomDto) {
+export function addHotelRoom(hotelId: number, data: HotelRoomDto) {
   return request.post(`/admin/hotel/${hotelId}/rooms`, data)
 }
 
 /**
  * 更新房型
  */
-export function updateHotelRoom(id: number, data: API.HotelRoomDto) {
+export function updateHotelRoom(id: number, data: HotelRoomDto) {
   return request.put(`/admin/hotel/room/${id}`, data)
 }
 

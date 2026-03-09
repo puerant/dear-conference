@@ -2,12 +2,15 @@ package com.huiwutong.conference.controller.admin;
 
 import com.huiwutong.conference.common.annotation.RequireRole;
 import com.huiwutong.conference.common.vo.Result;
+import com.huiwutong.conference.entity.SystemFile;
 import com.huiwutong.conference.service.ExpertService;
 import com.huiwutong.conference.service.dto.conference.ExpertDto;
 import com.huiwutong.conference.service.dto.conference.ExpertVo;
+import com.huiwutong.conference.system.SystemFileService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -20,6 +23,7 @@ import java.util.List;
 public class AdminExpertController {
 
     private final ExpertService expertService;
+    private final SystemFileService systemFileService;
 
     /**
      * 获取专家列表
@@ -78,8 +82,10 @@ public class AdminExpertController {
      */
     @PostMapping("/expert/{id}/avatar")
     @RequireRole("admin")
-    public Result<Void> updateAvatar(@PathVariable Long id, @RequestParam String avatarUrl) {
+    public Result<String> updateAvatar(@PathVariable Long id, @RequestParam("file") MultipartFile file) {
+        SystemFile uploadedFile = systemFileService.uploadFile(file, "expert_avatar", id);
+        String avatarUrl = uploadedFile.getFileUrl();
         expertService.updateAvatar(id, avatarUrl);
-        return Result.success();
+        return Result.success(avatarUrl);
     }
 }

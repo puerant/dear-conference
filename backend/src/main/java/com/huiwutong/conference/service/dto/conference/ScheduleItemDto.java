@@ -22,9 +22,8 @@ public class ScheduleItemDto implements Serializable {
     private Long id;
 
     /**
-     * 日程ID
+     * 日程ID（由路径参数回填）
      */
-    @NotNull(message = "日程ID不能为空")
     private Long scheduleId;
 
     /**

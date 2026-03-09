@@ -80,6 +80,7 @@ public class AdminHotelController {
     @PostMapping("/hotel/{id}/rooms")
     @RequireRole("admin")
     public Result<Long> addRoom(@PathVariable Long id, @Valid @RequestBody HotelRoomDto dto) {
+        dto.setHotelId(id);
         Long roomId = hotelService.addRoom(id, dto);
         return Result.success(roomId);
     }

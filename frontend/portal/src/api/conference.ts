@@ -1,4 +1,5 @@
 import request from '@/utils/request'
+import type { ConferenceInfo, ExpertListVo, HotelListVo, ScheduleGroupVo } from './types'
 
 // ==================== 会议模块 API ====================
 
@@ -6,7 +7,7 @@ import request from '@/utils/request'
  * 获取会议信息
  */
 export function getConferenceInfo() {
-  return request.get<API.ConferenceInfo>('/api/conference/info')
+  return request.get<ConferenceInfo, ConferenceInfo>('/api/conference/info')
 }
 
 /**
@@ -16,7 +17,7 @@ export function getScheduleList(params?: {
   startDate?: string
   endDate?: string
 }) {
-  return request.get<API.ScheduleGroupVo[]>('/api/conference/schedule', { params })
+  return request.get<ScheduleGroupVo[], ScheduleGroupVo[]>('/api/conference/schedule', { params })
 }
 
 /**
@@ -25,7 +26,7 @@ export function getScheduleList(params?: {
 export function getExpertList(params?: {
   isKeynote?: boolean
 }) {
-  return request.get<API.ExpertListVo>('/api/conference/experts', { params })
+  return request.get<ExpertListVo, ExpertListVo>('/api/conference/experts', { params })
 }
 
 /**
@@ -34,5 +35,5 @@ export function getExpertList(params?: {
 export function getHotelList(params?: {
   isRecommended?: boolean
 }) {
-  return request.get<API.HotelListVo>('/api/conference/hotels', { params })
+  return request.get<HotelListVo, HotelListVo>('/api/conference/hotels', { params })
 }

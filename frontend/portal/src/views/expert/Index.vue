@@ -66,20 +66,20 @@ import { ref, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { Star, User } from '@element-plus/icons-vue'
 import { getExpertList } from '@/api/conference'
-import type { ExpertVo } from '@/api/types'
+import type { Expert } from '@/api/types'
 
 const { t } = useI18n()
 
 const loading = ref(false)
-const keynoteSpeakers = ref<ExpertVo[]>([])
-const speakers = ref<ExpertVo[]>([])
+const keynoteSpeakers = ref<Expert[]>([])
+const speakers = ref<Expert[]>([])
 
 const loadExperts = async () => {
   try {
     loading.value = true
-    const res = await getExpertList()
-    keynoteSpeakers.value = res.data?.keynoteSpeakers || []
-    speakers.value = res.data?.speakers || []
+    const data = await getExpertList()
+    keynoteSpeakers.value = data?.keynoteSpeakers || []
+    speakers.value = data?.speakers || []
   } catch (error) {
     console.error('加载专家失败:', error)
   } finally {

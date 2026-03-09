@@ -125,9 +125,9 @@ const otherHotels = computed(() => allHotels.value.filter(h => h.isRecommended !
 const loadHotels = async () => {
   try {
     loading.value = true
-    const res = await getHotelList()
-    allHotels.value = res.data?.recommended || []
-    allHotels.value = [...allHotels.value, ...(res.data?.hotels || [])]
+    const data = await getHotelList()
+    allHotels.value = data?.recommended || []
+    allHotels.value = [...allHotels.value, ...(data?.hotels || [])]
   } catch (error) {
     console.error('加载酒店失败:', error)
   } finally {

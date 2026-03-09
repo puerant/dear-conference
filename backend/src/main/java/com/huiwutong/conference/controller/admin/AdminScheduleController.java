@@ -81,6 +81,7 @@ public class AdminScheduleController {
     @PostMapping("/schedule/{id}/items")
     @RequireRole("admin")
     public Result<Long> addScheduleItem(@PathVariable Long id, @Valid @RequestBody ScheduleItemDto dto) {
+        dto.setScheduleId(id);
         Long itemId = scheduleService.addScheduleItem(id, dto);
         return Result.success(itemId);
     }

@@ -20,7 +20,7 @@ import java.util.UUID;
 @ConditionalOnProperty(name = "file.storage.type", havingValue = "local", matchIfMissing = true)
 public class LocalFileStorageService implements FileStorageService {
 
-    @Value("${file.storage.path:/data/files}")
+    @Value("${file.storage.path:${file.upload-path:./uploads}}")
     private String basePath;
 
     @Value("${server.file-access-url:/files}")
@@ -31,11 +31,8 @@ public class LocalFileStorageService implements FileStorageService {
     @Override
     public String store(MultipartFile file) throws IOException {
         String datePath = LocalDate.now().format(DATE_FORMATTER);
-        String fullPath = basePath + File.separator + datePath;
-        File dir = new File(fullPath);
-        if (!dir.exists()) {
-            dir.mkdirs();
-        }
+        Path dir = Path.of(basePath, datePath).toAbsolutePath().normalize();
+        Files.createDirectories(dir);
 
         String originalFilename = file.getOriginalFilename();
         String extension = originalFilename != null && originalFilename.contains(".")
@@ -43,8 +40,8 @@ public class LocalFileStorageService implements FileStorageService {
             : "";
         String filename = UUID.randomUUID().toString() + extension;
 
-        File targetFile = new File(fullPath, filename);
-        file.transferTo(targetFile);
+        Path targetPath = dir.resolve(filename);
+        file.transferTo(targetPath);
 
         return fileAccessUrl + "/" + datePath + "/" + filename;
     }
@@ -57,7 +54,7 @@ public class LocalFileStorageService implements FileStorageService {
             ? originalFilename.substring(originalFilename.lastIndexOf("."))
             : "";
         String filename = UUID.randomUUID().toString() + extension;
-        return basePath + File.separator + datePath + File.separator + filename;
+        return Path.of(basePath, datePath, filename).toString();
     }
 
     @Override

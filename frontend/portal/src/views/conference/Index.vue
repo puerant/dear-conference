@@ -61,15 +61,16 @@
 import { ref, onMounted } from 'vue'
 import { Calendar } from '@element-plus/icons-vue'
 import { getConferenceInfo } from '@/api/conference'
+import type { ConferenceInfo } from '@/api/types'
 
 const loading = ref(true)
-const conferenceInfo = ref<API.ConferenceInfo | null>(null)
+const conferenceInfo = ref<ConferenceInfo | null>(null)
 
 const loadConferenceInfo = async () => {
   try {
     loading.value = true
-    const res = await getConferenceInfo()
-    conferenceInfo.value = res.data
+    const data = await getConferenceInfo()
+    conferenceInfo.value = data
   } catch (error) {
     console.error('加载会议信息失败:', error)
   } finally {
