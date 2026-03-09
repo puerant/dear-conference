@@ -133,8 +133,6 @@ async function handleResend() {
 </script>
 
 <style scoped lang="scss">
-@import "@/assets/styles/variables.scss";
-
 .auth-page {
   min-height: 100vh;
   display: flex;

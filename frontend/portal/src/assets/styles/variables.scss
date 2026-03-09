@@ -1,63 +1,131 @@
 // =====================
-// 主题色 - 浅紫色
+// 会务通 - 现代学术会议平台设计系统
+// Modern SaaS + Academic Conference Style
 // =====================
-$primary-color: #9b59b6;
-$primary-light: #bb8fce;
-$primary-lighter: #d4b7db;
-$primary-dark: #7d3c98;
 
-// 辅助色
-$secondary-color: #8e44ad;
-$accent-color: #e74c3c;
-$success-color: #27ae60;
-$warning-color: #f39c12;
-$info-color: #3498db;
+// =====================
+// 主色系 - 科技蓝 (Tech Blue)
+// =====================
+$primary-50: #EFF6FF;
+$primary-100: #DBEAFE;
+$primary-200: #BFDBFE;
+$primary-300: #93C5FD;
+$primary-400: #60A5FA;
+$primary-500: #3B82F6;   // 主色
+$primary-600: #2563EB;   // 悬停色
+$primary-700: #1D4ED8;
+$primary-800: #1E40AF;
+$primary-900: #1E3A8A;
 
-// 中性色
-$text-primary: #2c3e50;
-$text-secondary: #7f8c8d;
-$text-disabled: #bdc3c7;
-$border-color: #e5e7eb;
-$divider-color: #f0f0f0;
+// 品牌色（用于强调）
+$brand-gradient: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
+$brand-gradient-light: linear-gradient(135deg, #EFF6FF 0%, #F5F3FF 100%);
+
+// =====================
+// 语义色
+// =====================
+$success-light: #DCFCE7;
+$success-color: #22C55E;
+$success-dark: #16A34A;
+
+$warning-light: #FEF3C7;
+$warning-color: #F59E0B;
+$warning-dark: #D97706;
+
+$error-light: #FEE2E2;
+$error-color: #EF4444;
+$error-dark: #DC2626;
+
+$info-light: #E0F2FE;
+$info-color: #0EA5E9;
+$info-dark: #0284C7;
+
+// =====================
+// 中性色（灰阶）
+// =====================
+$gray-50: #F9FAFB;    // 页面背景
+$gray-100: #F3F4F6;   // 卡片背景
+$gray-200: #E5E7EB;   // 边框
+$gray-300: #D1D5DB;
+$gray-400: #9CA3AF;
+$gray-500: #6B7280;   // 次要文字
+$gray-600: #4B5563;
+$gray-700: #374151;   // 正文
+$gray-800: #1F2937;   // 标题
+$gray-900: #111827;   // 深色标题
+
+// 文字颜色
+$text-primary: $gray-900;
+$text-secondary: $gray-500;
+$text-tertiary: $gray-400;
+$text-disabled: $gray-300;
+$text-inverse: #FFFFFF;
+
+// 边框和分割线
+$border-light: $gray-200;
+$border-base: $gray-300;
+$divider-color: $gray-100;
 
 // 背景色
-$bg-primary: #ffffff;
-$bg-secondary: #f9f9fb;
-$bg-tertiary: #f3f4f6;
-
-// 渐变色
-$gradient-primary: linear-gradient(135deg, $primary-color, $secondary-color);
-$gradient-light: linear-gradient(135deg, $primary-lighter, $primary-light);
+$bg-page: $gray-50;
+$bg-card: #FFFFFF;
+$bg-elevated: #FFFFFF;
+$bg-overlay: rgba(0, 0, 0, 0.5);
 
 // =====================
-// 字体系统
+// 字体系统 - 阿里巴巴普惠体
 // =====================
-$font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-$font-family-heading: 'Noto Serif SC', 'Source Serif Pro', Georgia, serif;
-$font-family-mono: 'Fira Code', 'Consolas', 'Monaco', monospace;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
+// 中文字体回退链
+$font-family-zh: "Alibaba PuHuiTi", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+$font-family-en: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+$font-family-base: $font-family-zh, $font-family-en;
+$font-family-mono: "Fira Code", "JetBrains Mono", Consolas, Monaco, monospace;
+
+// 字号
 $font-size-xs: 12px;
 $font-size-sm: 14px;
 $font-size-base: 16px;
 $font-size-lg: 18px;
 $font-size-xl: 20px;
 $font-size-2xl: 24px;
-$font-size-3xl: 32px;
-$font-size-4xl: 40px;
+$font-size-3xl: 30px;
+$font-size-4xl: 36px;
 $font-size-5xl: 48px;
+$font-size-6xl: 60px;
 
-$font-weight-light: 300;
+// 字重
 $font-weight-normal: 400;
 $font-weight-medium: 500;
 $font-weight-semibold: 600;
 $font-weight-bold: 700;
 
+// 行高
 $line-height-tight: 1.25;
 $line-height-normal: 1.5;
 $line-height-relaxed: 1.75;
+$line-height-loose: 2;
+
+// 边框
+$border-light: $gray-200;
+$border-base: $gray-300;
+
+// 过渡
+$transition-fast: 0.15s ease;
+$transition-base: 0.2s ease;
+$transition-slow: 0.3s ease;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// 行高
+$line-height-tight: 1.25;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.75;
+$line-height-loose: 2;
 
 // =====================
-// 间距系统
+// 间距系统 (8px 基准)
 // =====================
 $spacing-0: 0;
 $spacing-1: 4px;
@@ -72,49 +140,216 @@ $spacing-12: 48px;
 $spacing-16: 64px;
 $spacing-20: 80px;
 $spacing-24: 96px;
+$spacing-32: 128px;
 
 // =====================
 // 圆角
 // =====================
-$radius-none: 0;
-$radius-sm: 4px;
+$radius-sm: 6px;
 $radius-base: 8px;
 $radius-lg: 12px;
 $radius-xl: 16px;
 $radius-2xl: 24px;
+$radius-3xl: 32px;
 $radius-full: 9999px;
 
 // =====================
-// 阴影
+// 阴影 (柔和阴影)
 // =====================
-$shadow-sm: 0 1px 2px 0 rgba(155, 89, 182, 0.05);
-$shadow-base: 0 1px 3px 0 rgba(155, 89, 182, 0.1);
-$shadow-md: 0 4px 6px -1px rgba(155, 89, 182, 0.1), 0 2px 4px -1px rgba(155, 89, 182, 0.06);
-$shadow-lg: 0 10px 15px -3px rgba(155, 89, 182, 0.1), 0 4px 6px -2px rgba(155, 89, 182, 0.05);
-$shadow-xl: 0 20px 25px -5px rgba(155, 89, 182, 0.1), 0 10px 10px -5px rgba(155, 89, 182, 0.04);
+$shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+$shadow-base: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
+$shadow-md: 0 6px 12px -2px rgba(0, 0, 0, 0.08), 0 3px 6px -3px rgba(0, 0, 0, 0.04);
+$shadow-lg: 0 10px 25px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+$shadow-xl: 0 20px 40px -4px rgba(0, 0, 0, 0.1), 0 8px 16px -4px rgba(0, 0, 0, 0.05);
+$shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+// 卡片悬浮阴影
+$shadow-card: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
+$shadow-card-hover: 0 12px 24px -6px rgba(0, 0, 0, 0.1), 0 4px 8px -2px rgba(0, 0, 0, 0.04);
+
+// =====================
+// 过渡动画
+// =====================
+$transition-fast: 0.15s ease;
+$transition-base: 0.2s ease;
+$transition-slow: 0.3s ease;
+$transition-bounce: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 
 // =====================
 // 响应式断点
 // =====================
-$breakpoint-xs: 480px;
-$breakpoint-sm: 576px;
+$breakpoint-sm: 640px;
 $breakpoint-md: 768px;
-$breakpoint-lg: 992px;
-$breakpoint-xl: 1200px;
-$breakpoint-2xl: 1400px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+$breakpoint-2xl: 1536px;
 
-@mixin respond-to($breakpoint) {
-  @if $breakpoint == xs {
-    @media (max-width: $breakpoint-xs) { @content; }
-  } @else if $breakpoint == sm {
+@mixin respond-to($size) {
+  @if $size == sm {
     @media (max-width: $breakpoint-sm) { @content; }
-  } @else if $breakpoint == md {
+  } @else if $size == md {
     @media (max-width: $breakpoint-md) { @content; }
-  } @else if $breakpoint == lg {
+  } @else if $size == lg {
     @media (max-width: $breakpoint-lg) { @content; }
-  } @else if $breakpoint == xl {
+  } @else if $size == xl {
     @media (max-width: $breakpoint-xl) { @content; }
-  } @else if $breakpoint == 2xl {
+  } @else if $size == 2xl {
     @media (max-width: $breakpoint-2xl) { @content; }
   }
 }
+
+// =====================
+// 常用布局 Mixin
+// =====================
+
+// 容器
+@mixin container {
+  width: 100%;
+  max-width: $breakpoint-xl;
+  margin: 0 auto;
+  padding: 0 $spacing-6;
+
+  @include respond-to(md) {
+    padding: 0 $spacing-4;
+  }
+}
+
+// 卡片基础样式
+@mixin card-base {
+  background: $bg-card;
+  border-radius: $radius-xl;
+  box-shadow: $shadow-card;
+  border: 1px solid $border-light;
+  transition: all $transition-base;
+
+  &:hover {
+    box-shadow: $shadow-card-hover;
+    transform: translateY(-4px);
+  }
+}
+
+// 按钮基础样式
+@mixin btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-3 $spacing-6;
+  background: $primary-500;
+  color: $text-inverse;
+  font-weight: $font-weight-medium;
+  border-radius: $radius-lg;
+  border: none;
+  cursor: pointer;
+  transition: all $transition-base;
+
+  &:hover {
+    background: $primary-600;
+    transform: translateY(-1px);
+    box-shadow: $shadow-md;
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+@mixin btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-3 $spacing-6;
+  background: $bg-card;
+  color: $text-primary;
+  font-weight: $font-weight-medium;
+  border-radius: $radius-lg;
+  border: 1px solid $border-base;
+  cursor: pointer;
+  transition: all $transition-base;
+
+  &:hover {
+    border-color: $primary-500;
+    color: $primary-500;
+    background: $primary-50;
+  }
+}
+
+// 文字截断
+@mixin text-ellipsis($lines: 1) {
+  @if $lines == 1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  } @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+// 绝对定位居中
+@mixin absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// Flex 居中
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// 标题样式
+@mixin heading-1 {
+  font-size: $font-size-5xl;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  color: $text-primary;
+  letter-spacing: -0.02em;
+
+  @include respond-to(md) {
+    font-size: $font-size-4xl;
+  }
+}
+
+@mixin heading-2 {
+  font-size: $font-size-4xl;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  color: $text-primary;
+  letter-spacing: -0.01em;
+
+  @include respond-to(md) {
+    font-size: $font-size-3xl;
+  }
+}
+
+@mixin heading-3 {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-tight;
+  color: $text-primary;
+}
+
+@mixin body-text {
+  font-size: $font-size-base;
+  line-height: $line-height-relaxed;
+  color: $text-secondary;
+}
+
+// =====================
+// Compatibility aliases
+// =====================
+$primary-color: $primary-500;
+$primary-lighter: $primary-100;
+$gradient-primary: $brand-gradient;
+
+$bg-secondary: $gray-100;
+$bg-tertiary: $gray-200;
+
+$text-placeholder: $text-tertiary;
+$border-color: $border-light;

@@ -1,86 +1,430 @@
-@import './variables.scss';
+@use './variables.scss' as *;
 
 // =====================
-// Element Plus theme override
+// Element Plus 主题覆盖
 // =====================
 :root {
-  --el-color-primary: #{$primary-color};
-  --el-color-primary-light-3: #{$primary-light};
-  --el-color-primary-light-5: #{$primary-lighter};
-  --el-color-primary-dark-2: #{$primary-dark};
+  // 主色
+  --el-color-primary: #{$primary-500};
+  --el-color-primary-light-3: #{$primary-300};
+  --el-color-primary-light-5: #{$primary-200};
+  --el-color-primary-light-7: #{$primary-100};
+  --el-color-primary-light-8: #{$primary-50};
+  --el-color-primary-light-9: #{$primary-50};
+  --el-color-primary-dark-2: #{$primary-700};
+
+  // 圆角
+  --el-border-radius-base: #{$radius-lg};
+  --el-border-radius-small: #{$radius-base};
+  --el-border-radius-round: #{$radius-full};
+
+  // 字体
+  --el-font-family: #{$font-family-base};
+
+  // 背景
+  --el-bg-color: #{$bg-page};
+  --el-bg-color-page: #{$bg-page};
+  --el-bg-color-overlay: #{$bg-overlay};
+
+  // 文字
+  --el-text-color-primary: #{$text-primary};
+  --el-text-color-regular: #{$text-secondary};
+  --el-text-color-secondary: #{$text-tertiary};
+  --el-text-color-placeholder: #{$text-tertiary};
+
+  // 边框
+  --el-border-color: #{$border-light};
+  --el-border-color-light: #{$border-light};
+  --el-border-color-lighter: #{$gray-100};
+
+  // 阴影
+  --el-box-shadow: #{$shadow-base};
+  --el-box-shadow-light: #{$shadow-sm};
+  --el-box-shadow-lighter: #{$shadow-xs};
+  --el-box-shadow-dark: #{$shadow-lg};
 }
 
 // =====================
-// Page transitions
+// 基础重置
+// =====================
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: $line-height-normal;
+  color: $text-primary;
+  background-color: $bg-page;
+  min-height: 100vh;
+}
+
+a {
+  color: $primary-500;
+  text-decoration: none;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $primary-600;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+// =====================
+// 容器
+// =====================
+.container {
+  @include container;
+}
+
+// =====================
+// 页面过渡动画
 // =====================
 .page-enter-active,
 .page-leave-active {
-  transition: opacity 0.2s, transform 0.2s;
+  transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
 .page-enter-from {
   opacity: 0;
-  transform: translateY(8px);
+  transform: translateY(12px);
 }
 
 .page-leave-to {
   opacity: 0;
+  transform: translateY(-12px);
 }
 
 // =====================
-// Common layout helpers
+// 页面头部区块（通用）
 // =====================
 .page-header-section {
-  background: $gradient-primary;
-  color: white;
-  padding: $spacing-16 0 $spacing-12;
+  background: $brand-gradient;
+  padding: $spacing-20 0 $spacing-16;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  // 装饰背景
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+      radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%);
+    pointer-events: none;
+  }
 
   .page-title {
-    font-size: $font-size-4xl;
-    font-weight: $font-weight-bold;
+    @include heading-1;
+    color: $text-inverse;
     margin-bottom: $spacing-4;
-
-    @include respond-to(md) {
-      font-size: $font-size-3xl;
-    }
+    position: relative;
   }
 
   .page-subtitle {
     font-size: $font-size-lg;
-    opacity: 0.9;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: $line-height-relaxed;
+    position: relative;
   }
 }
 
+// =====================
+// 区块标题（通用）
+// =====================
 .section-title {
-  font-size: $font-size-3xl;
-  font-weight: $font-weight-bold;
+  @include heading-2;
   text-align: center;
   margin-bottom: $spacing-12;
-  color: $text-primary;
+  position: relative;
 
-  @include respond-to(md) {
-    font-size: $font-size-2xl;
+  // 装饰下划线
+  &::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: $brand-gradient;
+    border-radius: $radius-full;
+    margin: $spacing-4 auto 0;
+  }
+}
+
+.section-subtitle {
+  font-size: $font-size-lg;
+  color: $text-secondary;
+  text-align: center;
+  max-width: 600px;
+  margin: -$spacing-8 auto $spacing-12;
+  line-height: $line-height-relaxed;
+}
+
+// =====================
+// 卡片样式（通用）
+// =====================
+.modern-card {
+  @include card-base;
+  padding: $spacing-8;
+}
+
+// =====================
+// 按钮增强
+// =====================
+.el-button--primary {
+  background: $primary-500;
+  border-color: $primary-500;
+  font-weight: $font-weight-medium;
+  border-radius: $radius-lg;
+  transition: all $transition-base;
+
+  &:hover,
+  &:focus {
+    background: $primary-600;
+    border-color: $primary-600;
+    transform: translateY(-1px);
+    box-shadow: $shadow-md;
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.el-button--default {
+  border-radius: $radius-lg;
+  font-weight: $font-weight-medium;
+  transition: all $transition-base;
+
+  &:hover {
+    border-color: $primary-500;
+    color: $primary-500;
+    background: $primary-50;
+  }
+}
+
+.el-button.is-link {
+  font-weight: $font-weight-medium;
+
+  &.el-button--primary {
+    color: $primary-500;
+
+    &:hover {
+      color: $primary-600;
+    }
+  }
+}
+
+// 大按钮
+.el-button--large {
+  padding: $spacing-4 $spacing-8;
+  height: auto;
+  font-size: $font-size-base;
+}
+
+// =====================
+// 表单增强
+// =====================
+.el-input__wrapper,
+.el-textarea__inner,
+.el-select__wrapper {
+  border-radius: $radius-lg !important;
+  transition: all $transition-base;
+
+  &:hover {
+    box-shadow: 0 0 0 1px $primary-300;
+  }
+
+  &.is-focus,
+  &:focus-within {
+    box-shadow: 0 0 0 2px $primary-500 !important;
+  }
+}
+
+.el-form-item__label {
+  font-weight: $font-weight-medium;
+  color: $text-primary;
+}
+
+// =====================
+// 分页器
+// =====================
+.el-pagination {
+  .el-pager li {
+    border-radius: $radius-base;
+    font-weight: $font-weight-medium;
+
+    &.is-active {
+      background: $primary-500;
+    }
+  }
+
+  .btn-prev,
+  .btn-next {
+    border-radius: $radius-base;
   }
 }
 
 // =====================
-// Scrollbar
+// 标签
+// =====================
+.el-tag {
+  border-radius: $radius-base;
+  font-weight: $font-weight-medium;
+}
+
+// =====================
+// 滚动条
 // =====================
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: $bg-tertiary;
+  background: $gray-100;
+  border-radius: $radius-full;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: $primary-lighter;
+  background: $gray-300;
   border-radius: $radius-full;
 
   &:hover {
-    background: $primary-light;
+    background: $gray-400;
   }
+}
+
+// =====================
+// 选择高亮
+// =====================
+::selection {
+  background: $primary-200;
+  color: $primary-900;
+}
+
+// =====================
+// 动画关键帧
+// =====================
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+// 动画类
+.animate-fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.6s ease forwards;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+// 延迟动画
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+
+// =====================
+// 实用工具类
+// =====================
+.text-primary { color: $text-primary; }
+.text-secondary { color: $text-secondary; }
+.text-tertiary { color: $text-tertiary; }
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.font-medium { font-weight: $font-weight-medium; }
+.font-semibold { font-weight: $font-weight-semibold; }
+.font-bold { font-weight: $font-weight-bold; }
+
+.mt-auto { margin-top: auto; }
+.mb-auto { margin-bottom: auto; }
+
+.hidden { display: none !important; }
+.invisible { visibility: hidden; }
+
+// 响应式隐藏
+@media (max-width: $breakpoint-md) {
+  .hide-mobile { display: none !important; }
+}
+
+@media (min-width: $breakpoint-md + 1) {
+  .hide-desktop { display: none !important; }
 }

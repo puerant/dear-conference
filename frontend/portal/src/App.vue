@@ -16,14 +16,18 @@ html {
 body {
   font-family: $font-family-base;
   color: $text-primary;
-  background: $bg-primary;
+  background: $bg-page;
   line-height: $line-height-normal;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: $breakpoint-xl;
   margin: 0 auto;
   padding: 0 $spacing-6;
+
+  @include respond-to(md) {
+    padding: 0 $spacing-4;
+  }
 }
 
 a {
