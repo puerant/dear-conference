@@ -7,31 +7,20 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
-/**
- * 日程项 VO
- */
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ScheduleItemVo implements Serializable {
+public class ScheduleVenueVo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     private Long id;
-    private Long scheduleId;
-    private LocalTime startTime;
-    private LocalTime endTime;
-    /**
-     * 兼容旧前端展示字段，值默认等于 startTime
-     */
-    private LocalTime time;
-    private String title;
+    private String name;
+    private String address;
     private String description;
-    private Long speakerId;
     private Integer sortOrder;
     private LocalDateTime createdAt;
-    private ExpertSimpleVo speaker;
+    private LocalDateTime updatedAt;
 }

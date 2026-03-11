@@ -75,6 +75,7 @@ export interface ScheduleVo {
   endTime: string | null
   title: string
   description: string | null
+  venueId: number
   venue: string | null
   sortOrder: number
   createdAt: string
@@ -89,13 +90,33 @@ export interface ScheduleDto {
   endTime?: string
   title: string
   description?: string
-  venue?: string
+  venueId: number
+  sortOrder?: number
+}
+
+export interface ScheduleVenueVo {
+  id: number
+  name: string
+  address: string | null
+  description: string | null
+  sortOrder: number
+  createdAt: string
+  updatedAt: string
+}
+
+export interface ScheduleVenueDto {
+  id?: number
+  name: string
+  address?: string
+  description?: string
   sortOrder?: number
 }
 
 export interface ScheduleItemVo {
   id: number
   scheduleId: number
+  startTime: string
+  endTime: string
   time: string
   title: string
   description: string | null
@@ -108,7 +129,9 @@ export interface ScheduleItemVo {
 export interface ScheduleItemDto {
   id?: number
   scheduleId?: number
-  time: string
+  startTime?: string
+  endTime?: string
+  time?: string
   title: string
   description?: string | null
   speakerId?: number | null
@@ -207,6 +230,7 @@ export function saveConferenceInfo(data: ConferenceInfoDto) {
 export function getScheduleList(params?: {
   startDate?: string
   endDate?: string
+  venueId?: number
 }) {
   return request.get<ScheduleVo[], ScheduleVo[]>('/admin/schedule', { params })
 }
@@ -258,6 +282,22 @@ export function updateScheduleItem(id: number, data: ScheduleItemDto) {
  */
 export function deleteScheduleItem(id: number) {
   return request.delete(`/admin/schedule-item/${id}`)
+}
+
+export function getScheduleVenueList() {
+  return request.get<ScheduleVenueVo[], ScheduleVenueVo[]>('/admin/schedule-venues')
+}
+
+export function createScheduleVenue(data: ScheduleVenueDto) {
+  return request.post('/admin/schedule-venues', data)
+}
+
+export function updateScheduleVenue(id: number, data: ScheduleVenueDto) {
+  return request.put(`/admin/schedule-venues/${id}`, data)
+}
+
+export function deleteScheduleVenue(id: number) {
+  return request.delete(`/admin/schedule-venues/${id}`)
 }
 
 // ---------- 专家管理 ----------

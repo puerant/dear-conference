@@ -1,7 +1,6 @@
 package com.huiwutong.conference.service.dto.conference;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
@@ -16,41 +15,35 @@ public class ScheduleItemDto implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    /**
-     * 主键（更新时必填）
-     */
     private Long id;
 
     /**
-     * 日程ID（由路径参数回填）
+     * 由路径参数回填
      */
     private Long scheduleId;
 
     /**
-     * 具体时间
+     * 时间段开始
      */
-    @NotNull(message = "时间不能为空")
-    private LocalTime time;
+    private LocalTime startTime;
 
     /**
-     * 标题
+     * 时间段结束
      */
+    private LocalTime endTime;
+
+    /**
+     * 兼容旧数据/旧前端，未传 startTime/endTime 时可退化读取此值
+     */
+    private LocalTime time;
+
     @NotBlank(message = "标题不能为空")
     @Size(max = 200, message = "标题长度不能超过200字符")
     private String title;
 
-    /**
-     * 描述
-     */
     private String description;
 
-    /**
-     * 演讲人ID
-     */
     private Long speakerId;
 
-    /**
-     * 排序
-     */
     private Integer sortOrder;
 }

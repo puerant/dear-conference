@@ -22,6 +22,15 @@ public class ScheduleItem implements Serializable {
     @TableField("schedule_id")
     private Long scheduleId;
 
+    @TableField("start_time")
+    private LocalTime startTime;
+
+    @TableField("end_time")
+    private LocalTime endTime;
+
+    /**
+     * @deprecated kept for backward compatibility with legacy data
+     */
     @TableField("time")
     private LocalTime time;
 

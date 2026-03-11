@@ -1,45 +1,32 @@
 package com.huiwutong.conference.entity;
 
-import com.baomidou.mybatisplus.annotation.*;
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
-/**
- * 日程实体
- */
 @Data
-@TableName("schedule")
-public class Schedule implements Serializable {
+@TableName("schedule_venue")
+public class ScheduleVenue implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    @TableField("date")
-    private LocalDate date;
+    @TableField("name")
+    private String name;
 
-    @TableField("start_time")
-    private LocalTime startTime;
-
-    @TableField("end_time")
-    private LocalTime endTime;
-
-    @TableField("title")
-    private String title;
+    @TableField("address")
+    private String address;
 
     @TableField("description")
     private String description;
-
-    @TableField("venue_id")
-    private Long venueId;
-
-    @TableField("venue")
-    private String venue;
 
     @TableField("sort_order")
     private Integer sortOrder;

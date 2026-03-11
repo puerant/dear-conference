@@ -28,6 +28,7 @@ public class ScheduleVo implements Serializable {
     private LocalTime endTime;
     private String title;
     private String description;
+    private Long venueId;
     private String venue;
     private Integer sortOrder;
     private LocalDateTime createdAt;
